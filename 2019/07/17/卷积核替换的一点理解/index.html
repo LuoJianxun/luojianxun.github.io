@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello MyBlog, Python, DeepLearning">
-    <meta name="description" content="这是我的第一个博客，耗时两个小时，终于搭建起来了……
-作为一个计算机学科的小白，一直想弄一个自己的博客，但是由于技术有限，时间有限，搁置了很久。最近找到了一个不错的博客搭建方法：hexo。有兴趣的可以去查阅相关资料，了解一下，我的博客就是在">
+    <meta name="keywords" content="卷积核替换的一点理解, Python, DeepLearning">
+    <meta name="description" content="
+感受野
+定义：感受野用来表示网络内部的不同神经元对原图像的感受范围的大小，或者说，cnn每一层输出的特征图(feature map)上的像素点在原始图像上映射的区域大小。
+神经元之所以无法对原始图像的所有信息进行感知，是因为在这些网络结构">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello MyBlog | 黯居</title>
+    <title>卷积核替换的一点理解 | 黯居</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -265,13 +267,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello MyBlog
+                        卷积核替换的一点理解
                     </div>
                 </div>
             </div>
@@ -380,9 +382,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/DeepLearning/" target="_blank">
+                                <span class="chip bg-color">DeepLearning</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -393,7 +399,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-07-16
+                    2019-07-17
                 </div>
 
                 
@@ -409,8 +415,37 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这是我的第一个博客，耗时两个小时，终于搭建起来了……</p>
-<p>作为一个计算机学科的小白，一直想弄一个自己的博客，但是由于技术有限，时间有限，搁置了很久。最近找到了一个不错的博客搭建方法：hexo。有兴趣的可以去查阅相关资料，了解一下，我的博客就是在hexo的基础上搭建起来的。</p>
+                <p><a name="wlPxp"></a></p>
+<h2 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h2><ul>
+<li><strong>定义</strong>：感受野用来表示网络内部的不同神经元对原图像的感受范围的大小，或者说，cnn每一层输出的特征图(feature map)上的像素点在原始图像上映射的区域大小。</li>
+<li>神经元之所以无法对原始图像的所有信息进行感知，是因为在这些网络结构中普遍使用卷积层和池化层，在层与层之间均为局部连接。</li>
+<li>神经元感受野的值越大表示其能接触到的原始图像范围就越大，也意味着它可能蕴含更为全局，语义层次更高的特征；相反，值越小则表示其所包含的特征越趋向局部和细节。因此，感受野的值可以用来大致判断每一层的抽象层次。</li>
+</ul>
+<p><a name="A7Y2m"></a></p>
+<h2 id="卷积核替换"><a href="#卷积核替换" class="headerlink" title="卷积核替换"></a>卷积核替换</h2><p>理论上来说，当stride为1，padding为0时，可以用2个3<em>3的卷积核替换1个5</em>5的卷积核，可以用3个3<em>3的卷积核替换1个7</em>7的卷积核。</p>
+<p>在上述条件下，假设原图为n<em>n大小，卷积核为k</em>k大小，步长为s，则卷积后的图像大小计算公式：</p>
+<p><img src="https://cdn.nlark.com/yuque/__latex/b98beb4f36e924c8e38267fb12a9a5d7.svg#card=math&code=n%5E%2A%3D%5Cfrac%7B%28n-k%29%7D%7Bs%7D%2B1&height=45&width=141" alt></p>
+<p>比如，原图为28<em>28大小，使用1个5</em>5卷积核卷积，得到的特征图大小为(28-5)/1+1=24；使用2个3*3卷积核对齐卷积，第一层特征图大小为(28-3)/1+1=26，第二层特征图的大小为(26-3)/1+1=24，与之前的大小相同。</p>
+<ul>
+<li>两个3<em>3卷积替换一个5</em>5卷积</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1557368225879-bcd30d89-a41b-4fc1-888f-a0dc7a072b1a.png#align=left&display=inline&height=471&name=9070639-38c7b569e00b0fc6.png&originHeight=471&originWidth=607&size=16373&status=done&width=607" alt="9070639-38c7b569e00b0fc6.png"><br><br><br></p>
+<ul>
+<li>三个3<em>3卷积替换一个7</em>7卷积</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1557368308689-bcc56f54-a28e-42ad-a46f-79effe26229e.png#align=left&display=inline&height=489&name=9070639-0389802e6cbc348f.png&originHeight=489&originWidth=782&size=20354&status=done&width=782" alt="9070639-0389802e6cbc348f.png"><br><a name="U6cgH"></a></p>
+<h2 id="卷积核替换的优点"><a href="#卷积核替换的优点" class="headerlink" title="卷积核替换的优点"></a>卷积核替换的优点</h2><ul>
+<li>从感受野的角度来说，替换的效果是等效的，多层卷积后的一个像素上的感受野与使用单层较大卷积的感受野相同。</li>
+</ul>
+<br>
+
+<ul>
+<li><p>从网络结构来说，一般会在每个卷积层后加一层激活函数，通常会使用relu，这样，用多层卷积替换后，会为网络增加更多的非线性，提升网络的泛化性能。</p>
+</li>
+<li><p>从计算量上来说，多层较小卷积核的计算量会比单层较大卷积核的计算量低很多。以替换7<em>7卷积核为例，假设原始图片的通道数为channels，替换前的参数量为7</em>7<em>channels=49channels，替换后的参数量为3</em>3<em>3</em>channels=27channels，减少了45%左右的参数量。</p>
+</li>
+</ul>
+<p>参考：<br><a href="https://www.jianshu.com/p/2b968e7a1715" target="_blank" rel="noopener">https://www.jianshu.com/p/2b968e7a1715</a><br><a href="https://blog.csdn.net/bemy1008/article/details/84559905" target="_blank" rel="noopener">https://blog.csdn.net/bemy1008/article/details/84559905</a><br><a href="https://www.cnblogs.com/my-love-is-python/p/10514856.html" target="_blank" rel="noopener">https://www.cnblogs.com/my-love-is-python/p/10514856.html</a></p>
 
             </div>
             <hr/>
@@ -569,9 +604,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello MyBlog》
+                    《卷积核替换的一点理解》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/16/hello-blog/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/17/卷积核替换的一点理解/" property="cc:attributionName"
                rel="cc:attributionURL">
                 黯
             </a> is licensed under a
@@ -611,49 +646,84 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2019/07/16/Python-logging/">
+                <a href="/2019/07/17/卷积核替换的一点理解/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Python logging">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="卷积核替换的一点理解">
                         
-                        <span class="card-title">Python logging</span>
+                        <span class="card-title">卷积核替换的一点理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-1. 基础用法
-1.1 日志级别Python 标准库 logging 用作记录日志，默认分为六种日志级别，如下表所示：
-表1 Python日志级别及对应数值
-
-
-
-日志级别
-数值
-
-
-
-CRITICAL
-50
-
-
-ERROR
-40
-
-
-W
+感受野
+定义：感受野用来表示网络内部的不同神经元对原图像的感受范围的大小，或者说，cnn每一层输出的特征图(feature map)上的像素点在原始图像上映射的区域大小。
+神经元之所以无法对原始图像的所有信息进行感知，是因为在这些网络结构
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-16
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            黯
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/DeepLearning/" target="_blank">
+                        <span class="chip bg-color">DeepLearning</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/07/17/Linux 快捷键/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Linux 快捷键">
+                        
+                        <span class="card-title">Linux 快捷键</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            简述：记录Linux控制台的一些快捷键  
+删除
+
+ctrl + d 删除光标所在位置上的字符相当于VIM里x或者dl
+ctrl + h 删除光标所在位置前的字符相当于VIM里hx或者dh
+ctrl + k 删除光标后面所有字符相当于VIM
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -665,50 +735,11 @@ W
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/07/16/hello-blog/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello MyBlog">
-                        
-                        <span class="card-title">Hello MyBlog</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            这是我的第一个博客，耗时两个小时，终于搭建起来了……
-作为一个计算机学科的小白，一直想弄一个自己的博客，但是由于技术有限，时间有限，搁置了很久。最近找到了一个不错的博客搭建方法：hexo。有兴趣的可以去查阅相关资料，了解一下，我的博客就是在
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            黯
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
