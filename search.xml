@@ -51,11 +51,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F07%2F17%2F%E9%9A%8F%E7%AC%94%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post$ hexo new &quot;My New Post&quot; More info: Writing Run server$ hexo server More info: Server Generate static files$ hexo generate More info: Generating Deploy to remote sites$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[HDF5文件]]></title>
     <url>%2F2019%2F07%2F16%2F%E5%BC%80%E5%8F%91%2FHDF5%E6%96%87%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[HDF5文件简介HDF（Hierarchical Data Format）指一种为存储和处理大容量科学数据设计的文件格式及相应库文件。HDF 最早由美国国家超级计算应用中心 NCSA 开发，目前在非盈利组织 HDF 小组维护下继续发展。当前流行的版本是 HDF5。HDF5 拥有一系列的优异特性，使其特别适合进行大量科学数据的存储和操作，如它支持非常多的数据类型，灵活，通用，跨平台，可扩展，高效的 I/O 性能，支持几乎无限量（高达 EB）的单文件存储等。详见其官方介绍：https://support.hdfgroup.org/HDF5/ HDF5文件构成一个HDF5文件就是一个由两种基本数据对象（groups and datasets）存放多种科学数据的容器。 HDF5 group: 包含0个或多个HDF5对象以及支持元数据（metadata）的一个群组结构 HDF5 dataset: 数据元素的一个多维数组以及支持元数据（metadata） 对于group和dataset，最直观的理解，可以参考我们的文件管理系统，不同的文件位于不同的目录下: 目录就是hdf5中的group, 描述了数据集dataset的分类信息，通过group 有效的将多种dataset 进行管理和区分； 文件就是hdf5中的dataset, 表示的是具体的数据。 而对于每一个dataset 而言，除了数据本身之外，这个数据集还会有很多的属性 attribute，在hdf5中，还同时支持存储数据集对应的属性信息，所有的属性信息的集合就叫做metadata。 使用Python操作HDF5文件 安装相关包需要使用h5py模块 pip install h5py 读写文件hdf5文件的读写与Python中操作其他文件类似，通过实例化h5py的File对象，传入不同的mode来达到读写的目的，h5py中支持的mode有以下几种： 模式 解释 r 只读，文件必须存在 r+ 读/写，文件必须存在 w 创建文件，如果文件存在，会清空其内容 w- 或 x 创建文件，如果文件存在，方法报错 a 如果文件存在，对其读/写，否则创建文件 写入hdf5文件使用w模式新建一个hdf5文件，然后可以使用create_group()，create_dataset()方法来创建group和dataset，在创建dataset时需要注意为dataset添加(name, shape, dtype)这三个属性，最后使用类似字典赋值的方式给数据赋值即可。 示例代码： import h5py import numpy as np with h5py.File(&quot;mytestfile.hdf5&quot;, &quot;w&quot;) as f: # 创建group grp = f.create_group(&quot;subgroup&quot;) # 给文件创建dataset dset = f.create_dataset(&quot;mydataset&quot;, (100,), dtype=&#39;i&#39;) # 在group里创建dataset dset1 = grp.create_dataset(&quot;mydataset1&quot;, (50,), dtype=&#39;i&#39;) dset2 = grp.create_dataset(&quot;mydataset2&quot;, (10,), dtype=&#39;f&#39;) # 写入数据 dset[...] = np.arange(100) 读取hdf5文件使用r模式读取hdf5文件，然后调用各种属性即可…… 示例代码： with h5py.File(&quot;mytestfile.hdf5&quot;, &quot;r&quot;) as f: # 列出所有group keys = list(f.keys()) print(keys) # 使用键值访问数据。类似字典 dset = f[&#39;mydataset&#39;] # 输出数据的属性、值 print(dset.name) print(dset.shape) print(dset.dtype) print(dset[0]) print(dset.attrs[&quot;temperature&quot;]) 输出： C:\Users\WYN\Desktop&gt;python h5py_practice.py [&#39;mydataset&#39;, &#39;subgroup&#39;] /mydataset (100,) int32 0 99.5 总结：**这里只列出简单的读写hdf5文件的方法，关于该文件，还有一些其他的用法，比如文件驱动等，如有兴趣，可以参考Python官方文档，文档链接在下面“参考”中给出。 参考博客：https://www.cnblogs.com/xudongliang/p/6907733.htmlhttps://blog.csdn.net/zkp_987/article/details/79852236 Python官方文档：http://docs.h5py.org/en/latest/index.html 附件代码及文件：HDF5.zip]]></content>
@@ -88,5 +83,10 @@
       <tags>
         <tag>daily</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F07%2F15%2F%E9%9A%8F%E7%AC%94%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post$ hexo new &quot;My New Post&quot; More info: Writing Run server$ hexo server More info: Server Generate static files$ hexo generate More info: Generating Deploy to remote sites$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
