@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luojianxun.github.io/"/>
-  <updated>2019-07-17T14:43:41.465Z</updated>
+  <updated>2019-07-17T14:48:01.597Z</updated>
   <id>https://luojianxun.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>对CTC的一个直观理解</title>
+    <link href="https://luojianxun.github.io/2019/07/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%AF%B9CTC%E7%9A%84%E4%B8%80%E4%B8%AA%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/"/>
+    <id>https://luojianxun.github.io/2019/07/17/深度学习/对CTC的一个直观理解/</id>
+    <published>2019-07-17T14:47:23.000Z</published>
+    <updated>2019-07-17T14:48:01.597Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;翻译自：&lt;a href=&quot;https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://luojianxun.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="DeepLearning" scheme="https://luojianxun.github.io/tags/DeepLearning/"/>
+    
+      <category term="NLP" scheme="https://luojianxun.github.io/tags/NLP/"/>
+    
+      <category term="RNN" scheme="https://luojianxun.github.io/tags/RNN/"/>
+    
+      <category term="CTC" scheme="https://luojianxun.github.io/tags/CTC/"/>
+    
+  </entry>
   
   <entry>
     <title>关于Tensor</title>
@@ -39,11 +71,11 @@
       <category term="深度学习" scheme="https://luojianxun.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
+      <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
+    
       <category term="DeepLearning" scheme="https://luojianxun.github.io/tags/DeepLearning/"/>
     
       <category term="Keras" scheme="https://luojianxun.github.io/tags/Keras/"/>
-    
-      <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
     
   </entry>
   
@@ -128,9 +160,38 @@
   </entry>
   
   <entry>
+    <title>HDF5文件</title>
+    <link href="https://luojianxun.github.io/2019/07/16/%E5%BC%80%E5%8F%91/HDF5%E6%96%87%E4%BB%B6/"/>
+    <id>https://luojianxun.github.io/2019/07/16/开发/HDF5文件/</id>
+    <published>2019-07-16T14:30:16.000Z</published>
+    <updated>2019-07-17T14:50:46.424Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a name=&quot;144iM&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;HDF5文件简介&quot;&gt;&lt;a href=&quot;#HDF5文件简介&quot; class=&quot;headerlink&quot; title=&quot;HDF5文件简介&quot;&gt;&lt;/a&gt;HDF5文件简介&lt;/h2&gt;&lt;p&gt;HDF（Hierarchical
+        
+      
+    
+    </summary>
+    
+      <category term="开发" scheme="https://luojianxun.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
+    
+      <category term="Data" scheme="https://luojianxun.github.io/tags/Data/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python logging</title>
-    <link href="https://luojianxun.github.io/2019/07/16/%E5%BC%80%E5%8F%91/Python-logging/"/>
-    <id>https://luojianxun.github.io/2019/07/16/开发/Python-logging/</id>
+    <link href="https://luojianxun.github.io/2019/07/16/%E5%BC%80%E5%8F%91/Python%20logging/"/>
+    <id>https://luojianxun.github.io/2019/07/16/开发/Python logging/</id>
     <published>2019-07-16T08:29:03.000Z</published>
     <updated>2019-07-17T14:09:12.216Z</updated>
     

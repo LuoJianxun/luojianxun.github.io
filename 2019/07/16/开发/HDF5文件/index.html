@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Python, DeepLearning">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="HDF5文件, Python, DeepLearning">
+    <meta name="description" content="
+HDF5文件简介HDF（Hierarchical Data Format）指一种为存储和处理大容量科学数据设计的文件格式及相应库文件。HDF 最早由美国国家超级计算应用中心 NCSA 开发，目前在非盈利组织 HDF 小组维护下继续发展。当">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 黯居</title>
+    <title>HDF5文件 | 黯居</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -246,13 +247,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        HDF5文件
                     </div>
                 </div>
             </div>
@@ -361,12 +362,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python/" target="_blank">
+                                <span class="chip bg-color">Python</span>
+                            </a>
+                        
+                            <a href="/tags/Data/" target="_blank">
+                                <span class="chip bg-color">Data</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/开发/" class="post-category" target="_blank">
+                                开发
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -374,21 +392,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-17
+                    2019-07-16
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        75
+                        929
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -404,15 +422,103 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <p><a name="144iM"></a></p>
+<h2 id="HDF5文件简介"><a href="#HDF5文件简介" class="headerlink" title="HDF5文件简介"></a>HDF5文件简介</h2><p>HDF（Hierarchical Data Format）指一种为存储和处理大容量科学数据设计的文件格式及相应库文件。HDF 最早由美国国家超级计算应用中心 NCSA 开发，目前在非盈利组织 HDF 小组维护下继续发展。当前流行的版本是 HDF5。HDF5 拥有一系列的优异特性，使其特别适合进行大量科学数据的存储和操作，如它支持非常多的数据类型，灵活，通用，跨平台，可扩展，高效的 I/O 性能，支持几乎无限量（高达 EB）的单文件存储等。<br>详见其官方介绍：<a href="https://link.jianshu.com?t=https%3A%2F%2Fsupport.hdfgroup.org%2FHDF5%2F" target="_blank" rel="noopener">https://support.hdfgroup.org/HDF5/</a></p>
+<p><a name="YggPa"></a></p>
+<h2 id="HDF5文件构成"><a href="#HDF5文件构成" class="headerlink" title="HDF5文件构成"></a>HDF5文件构成</h2><p>一个HDF5文件就是一个由两种基本数据对象（groups and datasets）存放多种科学数据的容器。</p>
+<ul>
+<li>HDF5 group: 包含0个或多个HDF5对象以及支持元数据（metadata）的一个群组结构</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1559805639892-6ce2fe54-66b9-481a-ac23-a3cbd9291ae9.png#align=left&display=inline&height=325&name=4207_oskfzd9n1g.png&originHeight=325&originWidth=882&size=31818&status=done&width=882" alt="4207_oskfzd9n1g.png"></p>
+<ul>
+<li>HDF5 dataset: 数据元素的一个多维数组以及支持元数据（metadata）</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1559805805203-125e2ee9-bd36-4c11-bfcd-e0502ddb3581.png#align=left&display=inline&height=428&name=848402-20170526113759279-700541009.png&originHeight=428&originWidth=759&size=51152&status=done&width=759" alt="848402-20170526113759279-700541009.png"><br>对于group和dataset，最直观的理解，可以参考我们的文件管理系统，不同的文件位于不同的目录下:</p>
+<ul>
+<li>目录就是hdf5中的group, 描述了数据集dataset的分类信息，通过group 有效的将多种dataset 进行管理和区分；</li>
+<li>文件就是hdf5中的dataset, 表示的是具体的数据。</li>
+</ul>
+<p>而对于每一个dataset 而言，除了数据本身之外，这个数据集还会有很多的属性 attribute，在hdf5中，还同时支持存储数据集对应的属性信息，所有的属性信息的集合就叫做metadata。</p>
+<p><a name="Q1XF0"></a></p>
+<h2 id="使用Python操作HDF5文件"><a href="#使用Python操作HDF5文件" class="headerlink" title="使用Python操作HDF5文件"></a>使用Python操作HDF5文件</h2><p><a name="HlvmV"></a></p>
+<h3 id="安装相关包"><a href="#安装相关包" class="headerlink" title="安装相关包"></a>安装相关包</h3><p>需要使用h5py模块</p>
+<pre><code class="python">pip install h5py</code></pre>
+<p><a name="yz5bR"></a></p>
+<h3 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h3><p>hdf5文件的读写与Python中操作其他文件类似，通过实例化h5py的File对象，传入不同的mode来达到读写的目的，h5py中支持的mode有以下几种：</p>
+<table>
+<thead>
+<tr>
+<th><strong>模式</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>只读，文件必须存在</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>读/写，文件必须存在</td>
+</tr>
+<tr>
+<td>w</td>
+<td>创建文件，如果文件存在，会清空其内容</td>
+</tr>
+<tr>
+<td>w- 或 x</td>
+<td>创建文件，如果文件存在，方法报错</td>
+</tr>
+<tr>
+<td>a</td>
+<td>如果文件存在，对其读/写，否则创建文件</td>
+</tr>
+</tbody></table>
+<p><a name="jxowh"></a></p>
+<h4 id="写入hdf5文件"><a href="#写入hdf5文件" class="headerlink" title="写入hdf5文件"></a>写入hdf5文件</h4><p>使用w模式新建一个hdf5文件，然后可以使用create_group()，create_dataset()方法来创建group和dataset，在创建dataset时需要注意为dataset添加(name, shape, dtype)这三个属性，最后使用类似字典赋值的方式给数据赋值即可。</p>
+<p><strong>示例代码：</strong></p>
+<pre><code class="python">import h5py
+import numpy as np
+
+with h5py.File(&quot;mytestfile.hdf5&quot;, &quot;w&quot;) as f:
+    # 创建group
+    grp = f.create_group(&quot;subgroup&quot;)
+    # 给文件创建dataset
+    dset = f.create_dataset(&quot;mydataset&quot;, (100,), dtype=&#39;i&#39;)
+    # 在group里创建dataset
+    dset1 = grp.create_dataset(&quot;mydataset1&quot;, (50,), dtype=&#39;i&#39;)
+    dset2 = grp.create_dataset(&quot;mydataset2&quot;, (10,), dtype=&#39;f&#39;)
+
+    # 写入数据
+    dset[...] = np.arange(100)</code></pre>
+<p><a name="TbZwW"></a></p>
+<h4 id="读取hdf5文件"><a href="#读取hdf5文件" class="headerlink" title="读取hdf5文件"></a>读取hdf5文件</h4><p>使用r模式读取hdf5文件，然后调用各种属性即可……</p>
+<p><strong>示例代码：</strong></p>
+<pre><code class="python">with h5py.File(&quot;mytestfile.hdf5&quot;, &quot;r&quot;) as f:
+    # 列出所有group
+    keys = list(f.keys())
+    print(keys)
+    # 使用键值访问数据。类似字典
+    dset = f[&#39;mydataset&#39;]
+    # 输出数据的属性、值
+    print(dset.name)
+    print(dset.shape)
+    print(dset.dtype)
+    print(dset[0])
+    print(dset.attrs[&quot;temperature&quot;])</code></pre>
+<p><strong>输出：</strong></p>
+<pre><code class="powershell">C:\Users\WYN\Desktop&gt;python h5py_practice.py
+[&#39;mydataset&#39;, &#39;subgroup&#39;]
+/mydataset
+(100,)
+int32
+0
+99.5</code></pre>
+<p><strong>总结：</strong><br>**<br>这里只列出简单的读写hdf5文件的方法，关于该文件，还有一些其他的用法，比如文件驱动等，如有兴趣，可以参考Python官方文档，文档链接在下面“参考”中给出。</p>
+<p><a name="1BOtQ"></a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>博客：<br><a href="https://www.cnblogs.com/xudongliang/p/6907733.html" target="_blank" rel="noopener">https://www.cnblogs.com/xudongliang/p/6907733.html</a><br><a href="https://blog.csdn.net/zkp_987/article/details/79852236" target="_blank" rel="noopener">https://blog.csdn.net/zkp_987/article/details/79852236</a></p>
+<p>Python官方文档：<br><a href="http://docs.h5py.org/en/latest/index.html" target="_blank" rel="noopener">http://docs.h5py.org/en/latest/index.html</a></p>
+<p><a name="Ow4si"></a></p>
+<h2 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h2><p>代码及文件：<br><a href="https://www.yuque.com/attachments/yuque/0/2019/zip/324368/1559807886072-74f56c6d-874d-46b1-8a2a-f1e82c7d84f6.zip?_lake_card=%7B%22uid%22%3A%22rc-upload-1559702001813-89%22%2C%22src%22%3A%22https%3A%2F%2Fwww.yuque.com%2Fattachments%2Fyuque%2F0%2F2019%2Fzip%2F324368%2F1559807886072-74f56c6d-874d-46b1-8a2a-f1e82c7d84f6.zip%22%2C%22name%22%3A%22HDF5.zip%22%2C%22size%22%3A1289%2C%22type%22%3A%22application%2Fzip%22%2C%22ext%22%3A%22zip%22%2C%22progress%22%3A%7B%22percent%22%3A0%7D%2C%22status%22%3A%22done%22%2C%22percent%22%3A0%2C%22card%22%3A%22file%22%7D" target="_blank" rel="noopener">HDF5.zip</a></p>
 
             </div>
             <hr/>
@@ -578,24 +684,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/07/17/运维/Linux 快捷键/">
+                <a href="/2019/07/17/随笔/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Linux 快捷键">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">Linux 快捷键</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简述：记录Linux控制台的一些快捷键  
-删除
-
-ctrl + d 删除光标所在位置上的字符相当于VIM里x或者dl
-ctrl + h 删除光标所在位置前的字符相当于VIM里hx或者dh
-ctrl + k 删除光标后面所有字符相当于VIM
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
                         
                     </div>
                     <div class="publish-info">
@@ -604,23 +705,11 @@ ctrl + k 删除光标后面所有字符相当于VIM
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/运维/" class="post-category" target="_blank">
-                                    运维
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            黯
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/" target="_blank">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -632,20 +721,39 @@ ctrl + k 删除光标后面所有字符相当于VIM
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/16/开发/HDF5文件/">
+                <a href="/2019/07/16/开发/Python logging/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="HDF5文件">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Python logging">
                         
-                        <span class="card-title">HDF5文件</span>
+                        <span class="card-title">Python logging</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-HDF5文件简介HDF（Hierarchical Data Format）指一种为存储和处理大容量科学数据设计的文件格式及相应库文件。HDF 最早由美国国家超级计算应用中心 NCSA 开发，目前在非盈利组织 HDF 小组维护下继续发展。当
+1. 基础用法
+1.1 日志级别Python 标准库 logging 用作记录日志，默认分为六种日志级别，如下表所示：
+表1 Python日志级别及对应数值
+
+
+
+日志级别
+数值
+
+
+
+CRITICAL
+50
+
+
+ERROR
+40
+
+
+W
                         
                     </div>
                     <div class="publish-info">
@@ -667,12 +775,8 @@ HDF5文件简介HDF（Hierarchical Data Format）指一种为存储和处理大�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/" target="_blank">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/Data/" target="_blank">
-                        <span class="chip bg-color">Data</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>

@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Python, DeepLearning">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="对CTC的一个直观理解, Python, DeepLearning">
+    <meta name="description" content="翻译自：https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c
+如果想要让计算机识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 黯居</title>
+    <title>对CTC的一个直观理解 | 黯居</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -246,13 +247,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        对CTC的一个直观理解
                     </div>
                 </div>
             </div>
@@ -361,12 +362,37 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/DeepLearning/" target="_blank">
+                                <span class="chip bg-color">DeepLearning</span>
+                            </a>
+                        
+                            <a href="/tags/NLP/" target="_blank">
+                                <span class="chip bg-color">NLP</span>
+                            </a>
+                        
+                            <a href="/tags/RNN/" target="_blank">
+                                <span class="chip bg-color">RNN</span>
+                            </a>
+                        
+                            <a href="/tags/CTC/" target="_blank">
+                                <span class="chip bg-color">CTC</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/深度学习/" class="post-category" target="_blank">
+                                深度学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -381,14 +407,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        75
+                        2.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        9 分
                     </div>
                     
                 
@@ -404,15 +430,46 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <p>翻译自：<a href="https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c" target="_blank" rel="noopener">https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c</a></p>
+<p>如果想要让计算机识别文本，神经网络（neural networks, 以下简称NN）是一个非常好的选择，因为目前来说，它相对于其他方法表现的更好。在实际用例中，NN一般由卷积层和循环层组成，卷积层用来提取序列特征，循环层通过该序列传播信息。最后会以一个简化的矩阵的形式输出每个序列元素对应的字符分数。现在，有两件事需要这个矩阵来做：<br>1.训练：计算训练神经网络过程中的损失值<br>2.推断：通过解码矩阵来获得输入图片包含的信息<br>这两项任务都可以通过CTC操作来实现，下面图片1是一个手写识别系统的概览</p>
+<p>来看看CTC的具体操作，本文会在不涉及它背后复杂公式的情况下，挖掘一下到底它是怎么工作的。最后，如果你对相关的python代码和公式有兴趣，我会给出参考链接。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556080558614-9a90335d-2ede-4cf6-a2e8-17cdd44e074b.png#align=left&display=inline&height=325&name=1.PNG&originHeight=333&originWidth=764&size=85620&status=done&width=746" alt="1.PNG"></p>
+<p><a name="f1f92729"></a></p>
+<h2 id="我们为什么想要使用CTC"><a href="#我们为什么想要使用CTC" class="headerlink" title="我们为什么想要使用CTC"></a>我们为什么想要使用CTC</h2><p>当然，我们可以创建一个包含文本行的图片数据集，然后为图片每个水平位置指定想应的字符，就像下图展示的那样。然后，我们就可以训练一个神经网络来输出每个水平位置上的字符得分。然而，这种简单的解决办法有两个问题需要处理：</p>
+<p>1.在字符水平上标注一个数据集是非常耗时（和无聊）的</p>
+<p>2.这种办法只能得到字符的得分，因此我们还需要做更多的处理才能从中获得最终的文本。单个字符可能会横跨多个水平位置，例如，我们可能会从下图中得到一个字符串”ttooo”，因为字母”o”在这个地方显得非常宽。这时我们就不得不去除所有多余的”t”和”o”。但是，如果我们要识别的文本是”too”时，去除所有重复的”o”显然会产生一个错误的结果，这种情况该如何处理？</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556080528404-d11a81f5-2ebe-4d16-9a32-42812038bd69.png#align=left&display=inline&height=388&name=2.PNG&originHeight=388&originWidth=477&size=22987&status=done&width=477" alt="2.PNG"></p>
+<p>CTC为我们解决了下面的两个问题：</p>
+<p>1.我们只需要告诉CTC损失函数图片中包含文本。因此我们可以忽略图片中字符的位置和宽度。</p>
+<p>2.不需要为了识别文本而去做更多的处理。</p>
+<p><a name="46455fca"></a></p>
+<h2 id="CTC是如何生效的"><a href="#CTC是如何生效的" class="headerlink" title="CTC是如何生效的"></a>CTC是如何生效的</h2><p>正如之前讨论的那样，我们不想对图片的每个水平位置做标注（一般称为时间步长，下同）。CTC损失函数会引导神经网络的训练过程。我们只会把神经网络的输出矩阵和对应的标注（ground-truth，GT）文本提供给CTC损失函数。但是它是怎样知道每个字符在图片中的位置的？事实上，它并不知道这一信息。取而代之的是，它会尝试所有可能的图片和GT文本的比对情况，并为所有得分求和。这样，如果比对情况的得分很高，则对应的GT文本的得分也会很高。</p>
+<p><a name="fab62149"></a></p>
+<h3 id="编码文本"><a href="#编码文本" class="headerlink" title="编码文本"></a>编码文本</h3><p>如何编码重复字符是我们需要处理的一个问题（你一定还记得我们之前说过的关于单词”too”的问题）。这里是通过引入一个伪字符（一般称其为空，但不要把它当做真正的空，例如，它可以是一个空白字符）。在下文中，我们把这个特殊的字符记为”-“。我们会使用一种巧妙的编码方式来解决重复字符的问题：当编码一个文本时，我们可以插入任意多的空白字符在任意位置，在解码时我们会去除它。不过，我们必须在重复字符之间插入一个空白字符，例如”he<strong>ll</strong>o”中的两个 l 之间。此外，我们可以随心所欲地重复每个字符。</p>
+<p>让我们来看几个例子：</p>
+<ul>
+<li>“to” -&gt; “—ttttttooo”，或者”-t-o”，或者”to”</li>
+<li>“too” -&gt; “—ttttto-o”，或者”-t-o-o-“，或者”to-o”，但不能是”too”</li>
+</ul>
+<p>正如你所见的，这种模式也允许我们轻松地为同一个文本创建不同的比对情况，例如，”t-o”、”too”和”-to”都表示同一文本(“to”)，但是对应不同的图片比对情况。我们会训练神经网络以输出一个编码过的文本（通过编码神经网络的输出矩阵）。</p>
+<p><a name="e6bb7ee3"></a></p>
+<h3 id="计算损失"><a href="#计算损失" class="headerlink" title="计算损失"></a>计算损失</h3><p>我们需要在训练神经网络时计算给定的图片和对应GT文本的损失值。你已经知道神经网络会输出一个矩阵，这个矩阵的内容是每个字符在每个时间步长上的得分。下图是一个极简版本的矩阵：只有两个时间步长（t0，t1）和三个字符（”a”、”b”和空白字符”-“）。每个时间步长上的字符得分总和为1。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556090756592-028eec90-fb75-4795-8cb8-8561115b371b.png#align=left&display=inline&height=452&name=3.PNG&originHeight=452&originWidth=695&size=41019&status=done&width=695" alt="3.PNG"></p>
+<p>此外，你已经知道损失值是通过将所有可能的GT文本的比对情况的得分求和得到的，这种方法并不关心文本在图片的哪个位置出现。</p>
+<p>某个比对情况（或者称为路径，在很多文献中都这样叫它）的得分是将对应字符的得分相乘计算出来的。在上面的例子中，路径”aa”的得分是0.4<em>0.4=0.16，”a-“的得分是0.4</em>0.6=0.24，”-a”的得分是0.6<em>0.4=0.24。为了得到给定GT文本的得分，我们将对应该文本的全部路径得分求和。假设示例中的GT文本是”a”：我们需要计算所有长度为2的可能情况（因为矩阵有两个时间步长），这些情况包括”aa”、”a-“和”-a”，我们前面已经计算了这几条路径的得分，所以我们只需要将它们加起来0.4</em>0.4+0.4<em>0.6+0.6</em>0.4=0.64。如果假设GT文本是””，可以发现只有一条对应的路径”–”，它的得分为0.6*0.6=0.36。</p>
+<p>如果你观察的够仔细，可以发现我们计算了GT文本的概率，而不是损失值。然而，损失值只是概率的负对数。损失值通过神经网络反向传播，神经网络的参数会根据使用的优化器进行更新，这里我们不做深入讨论。</p>
+<p><a name="b48b3f8a"></a></p>
+<h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><p>当我们有一个训练好的模型，我们通常希望用它来识别以前没有用过的图片中的文本。用更加技术性的语言来说，我们想要在给定神经网络的输出矩阵的情况下计算出最可能的文本。你已经知道一种计算给定文本得分的方法。但是这次，我们没有给出任何文本，事实上，这个文本正是我们想要找出的。如果只有少量得到时间步长和字符，尝试每种可能的文本将会起作用，但是在实际使用中，这并不适用。</p>
+<p>最优解码路径是一个既简单又高效的算法，它由两步组成：</p>
+<p>1.通过选取每个时间步长上最可能的字符来计算最优路径；</p>
+<p>2.通过先去除路径中的重复字符，再去除所有空白字符的方法来撤销编码，剩下的内容即识别出的文本。</p>
+<p>下图中给出了一个示例，包括”a”、”b”和空白字符”-“三个字符，5个时间步长。将最优路径解码器应用于这个矩阵上：t0时刻最可能的字符是”a”，t1和t2时刻也是”a”，t3时刻空白字符得分最高，最后，t4时刻最可能的是”b”。由此我们获得了一条路径”aaa-b”。去除重复字符，生成字符串”a-b”，去除空白字符，得到文本”ab”，也就是识别出的文本。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556093632771-a59ef35a-52e0-4caa-8589-c0a5d6386e4b.png#align=left&display=inline&height=487&name=4.PNG&originHeight=487&originWidth=649&size=44744&status=done&width=649" alt="4.PNG"><br><br><br>当然，最优解码路径也只是一种近似情况。构造一个反例非常容易：如果解码图片3中的矩阵，最终的识别文本将会是””。但我们已经知道””的概率是0.36，而”a”的概率是0.64。不过，在实际情况中，近似算法经常会给出一个较好的结果。另外，还有许多更好的解码器，例如波束搜索解码，前缀搜索解码或令牌传递，它们使用语言结构信息来提升识别结果。<br></p>
+<p><a name="49ad099b"></a></p>
+<h2 id="结论、更深入的文献"><a href="#结论、更深入的文献" class="headerlink" title="结论、更深入的文献"></a>结论、更深入的文献</h2><p>首先，我们聚焦于普通解决方案遇到的问题。然后我们观察了CTC如何解决这些问题。最后，我们了解了CTC怎样编码文本，怎样计算损失以及如何解码CTC训练的神经网络的输出矩阵，从而解释了CTC的工作原理。</p>
+<p>这应该让你能够在TensorFlow中使用ctc_loss或者ctc_greedy_decoder时，有一个更直观的理解。但是，如果你想自己实现一个CTC，你需要学习更多的细节，尤其是如何使其运行得更快这点。Graves et al. [1]介绍了CTC操作，这篇文章同时展示了所有相关的数学知识。如果你对如何提升解码感兴趣，可以看看关于波束搜索解码的这几篇文章[2][3]。我使用Python和C++实现了一些解码器和损失函数，你可以在GitHub上找到它[4][5]。最后，如果你想了解如何识别（手写）文本的大图，可以看看我的关于如何建立一个手写文本识别系统的文章。<br>[1] <a href="https://www.cs.toronto.edu/~graves/icml_2006.pdf" target="_blank" rel="noopener">Original paper containing all the math</a><br>[2] <a href="https://towardsdatascience.com/5a889a3d85a7" target="_blank" rel="noopener">Vanilla beam search decoding</a><br>[3] <a href="https://towardsdatascience.com/b051d28f3d2e" target="_blank" rel="noopener">Word beam search decoding</a><br>[4] <a href="https://github.com/githubharald/CTCDecoder" target="_blank" rel="noopener">Python implementation of decoders</a><br>[5] <a href="https://github.com/githubharald/CTCWordBeamSearch" target="_blank" rel="noopener">Implementation of word beam search decoding</a><br>[6] <a href="https://towardsdatascience.com/2326a3487cd5" target="_blank" rel="noopener">Text recognition system</a></p>
+<p><a name="zRPGF"></a></p>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>CTC相关的一个博客，写的非常详细：<br><a href="https://xiaodu.io/ctc-explained/" target="_blank" rel="noopener">https://xiaodu.io/ctc-explained/</a></p>
 
             </div>
             <hr/>
@@ -574,51 +631,61 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/07/17/运维/Linux 快捷键/">
+                <a href="/2019/07/17/深度学习/对CTC的一个直观理解/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Linux 快捷键">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="对CTC的一个直观理解">
                         
-                        <span class="card-title">Linux 快捷键</span>
+                        <span class="card-title">对CTC的一个直观理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简述：记录Linux控制台的一些快捷键  
-删除
-
-ctrl + d 删除光标所在位置上的字符相当于VIM里x或者dl
-ctrl + h 删除光标所在位置前的字符相当于VIM里hx或者dh
-ctrl + k 删除光标后面所有字符相当于VIM
+                            翻译自：https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c
+如果想要让计算机识
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/运维/" class="post-category" target="_blank">
-                                    运维
+                            <a href="/categories/深度学习/" class="post-category" target="_blank">
+                                    深度学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/" target="_blank">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/DeepLearning/" target="_blank">
+                        <span class="chip bg-color">DeepLearning</span>
+                    </a>
+                    
+                    <a href="/tags/NLP/" target="_blank">
+                        <span class="chip bg-color">NLP</span>
+                    </a>
+                    
+                    <a href="/tags/RNN/" target="_blank">
+                        <span class="chip bg-color">RNN</span>
+                    </a>
+                    
+                    <a href="/tags/CTC/" target="_blank">
+                        <span class="chip bg-color">CTC</span>
                     </a>
                     
                 </div>
@@ -632,32 +699,33 @@ ctrl + k 删除光标后面所有字符相当于VIM
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/16/开发/HDF5文件/">
+                <a href="/2019/07/17/深度学习/关于Tensor/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="HDF5文件">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="关于Tensor">
                         
-                        <span class="card-title">HDF5文件</span>
+                        <span class="card-title">关于Tensor</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-HDF5文件简介HDF（Hierarchical Data Format）指一种为存储和处理大容量科学数据设计的文件格式及相应库文件。HDF 最早由美国国家超级计算应用中心 NCSA 开发，目前在非盈利组织 HDF 小组维护下继续发展。当
+TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过TensorFlow，众所周知，它是谷歌推出的一款深度学习框架，但是为什么叫TensorFlow？什么是Tensor？它如何Flow呢？
+本文重点讲Tensor，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/开发/" class="post-category" target="_blank">
-                                    开发
+                            <a href="/categories/深度学习/" class="post-category" target="_blank">
+                                    深度学习
                                 </a>
                             
                             
@@ -671,8 +739,12 @@ HDF5文件简介HDF（Hierarchical Data Format）指一种为存储和处理大�
                         <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/Data/" target="_blank">
-                        <span class="chip bg-color">Data</span>
+                    <a href="/tags/DeepLearning/" target="_blank">
+                        <span class="chip bg-color">DeepLearning</span>
+                    </a>
+                    
+                    <a href="/tags/Keras/" target="_blank">
+                        <span class="chip bg-color">Keras</span>
                     </a>
                     
                 </div>
