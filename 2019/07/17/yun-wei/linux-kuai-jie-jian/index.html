@@ -4,10 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="关于Tensor, Python, DeepLearning">
-    <meta name="description" content="
-TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过TensorFlow，众所周知，它是谷歌推出的一款深度学习框架，但是为什么叫TensorFlow？什么是Tensor？它如何Flow呢？
-本文重点讲Tensor，">
+    <meta name="keywords" content="Linux 快捷键, Python, DeepLearning">
+    <meta name="description" content="删除
+
+ctrl + d 删除光标所在位置上的字符相当于VIM里x或者dl
+ctrl + h 删除光标所在位置前的字符相当于VIM里hx或者dh
+ctrl + k 删除光标后面所有字符相当于VIM里d shift+$
+ctrl + u 删除">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@ TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过Tensor
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>关于Tensor | 黯居</title>
+    <title>Linux 快捷键 | 黯居</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -34,7 +37,7 @@ TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过Tensor
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -248,13 +251,13 @@ TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过Tensor
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        关于Tensor
+                        Linux 快捷键
                     </div>
                 </div>
             </div>
@@ -365,16 +368,8 @@ TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过Tensor
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Python/" target="_blank">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
-                            <a href="/tags/DeepLearning/" target="_blank">
-                                <span class="chip bg-color">DeepLearning</span>
-                            </a>
-                        
-                            <a href="/tags/Keras/" target="_blank">
-                                <span class="chip bg-color">Keras</span>
+                            <a href="/tags/Linux/" target="_blank">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
@@ -385,8 +380,8 @@ TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过Tensor
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/深度学习/" class="post-category" target="_blank">
-                                深度学习
+                            <a href="/categories/运维/" class="post-category" target="_blank">
+                                运维
                             </a>
                         
                     </div>
@@ -404,14 +399,14 @@ TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过Tensor
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        515
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        1 分
                     </div>
                     
                 
@@ -427,113 +422,55 @@ TensorFlow！Tensor？Flow？只要接触过深度学习，必然听说过Tensor
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a name="erqNQ"></a></p>
-<h2 id="TensorFlow！Tensor？Flow？"><a href="#TensorFlow！Tensor？Flow？" class="headerlink" title="TensorFlow！Tensor？Flow？"></a>TensorFlow！Tensor？Flow？</h2><p>只要接触过深度学习，必然听说过TensorFlow，众所周知，它是谷歌推出的一款深度学习框架，但是为什么叫TensorFlow？什么是Tensor？它如何Flow呢？</p>
-<p>本文重点讲Tensor，对于Flow，不做深入讨论。</p>
-<p><a name="CTB5d"></a></p>
-<h2 id="Tensor"><a href="#Tensor" class="headerlink" title="Tensor"></a>Tensor</h2><p><a name="K1RYm"></a></p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>Tensor，中文译为张量，在深度学习中，0D张量称为标量，1D张量称为向量，2D张量称为矩阵，当然，还有3D张量、4D……更高维。</p>
-<p>对于张量，一般有三个关键属性：</p>
+                <h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><hr>
 <ul>
-<li>轴的个数(维度)。例如，3D张量有3个轴，矩阵有2个轴。在numpy中也叫张量的ndim；</li>
-<li>形状(shape)。一般是一个整数元组，表示张量沿每个轴的维度大小（元素个数），向量的形状只包含一个元素，如(5, )，而标量的形状为空，即()；</li>
-<li>数据类型(dtype)。张量中包含的数据的类型，float32，uint8等。</li>
+<li>ctrl + d 删除光标所在位置上的字符相当于VIM里x或者dl</li>
+<li>ctrl + h 删除光标所在位置前的字符相当于VIM里hx或者dh</li>
+<li>ctrl + k 删除光标后面所有字符相当于VIM里d shift+$</li>
+<li>ctrl + u 删除光标前面所有字符相当于VIM里d shift+^</li>
+<li>ctrl + w 删除光标前一个单词相当于VIM里db</li>
+<li>ctrl + y 恢复ctrl+u上次执行时删除的字符</li>
+<li>ctrl + ? 撤消前一次输入</li>
+<li>alt + r 撤消前一次动作</li>
+<li>alt + d 删除光标所在位置的后单词</li>
 </ul>
-<p>注：有一点需要注意，张量tensor和numpy数组不是一个东西！二者可以相互转换，但不是一个东西！</p>
-<p><a name="hTzow"></a></p>
-<h3 id="Keras中的Tensor"><a href="#Keras中的Tensor" class="headerlink" title="Keras中的Tensor"></a>Keras中的Tensor</h3><p>Keras也好，TensorFlow也好，都会频繁使用tensor，由于Keras一般是使用tensorflow作为backend，所以二者的tensor是一致的。</p>
-<p>以Keras为例（下面代码也全是基于Keras），在训练模型时，很多时候模型的中间层传输的是Tensor，如果直接用print函数打印，得到的可能是这样的内容：</p>
-<pre><code class="powershell">Tensor(&quot;dense_last_1/Relu:0&quot;, shape=(?, 1), dtype=float32)</code></pre>
-<p>这显然不是我们想看的东西，换句话说，我们需要的是这个tensor的具体数值，而这里输出的是这个tensor的信息，事实上，当我们创建一个tensor后，直接print输出的也是类似这样的信息：</p>
-<pre><code class="python">import keras.backend as K
-import numpy as np
-
-# 创建tensor
-x = [1, 2, 3, 4, 5, 6]
-x = np.array(x)
-x = K.variable(x)
-print(x)</code></pre>
-<p><strong>输出：</strong></p>
-<pre><code class="powershell">C:\Users\WYN\Desktop&gt;python temp.py
-Using TensorFlow backend.
-&lt;tf.Variable &#39;Variable:0&#39; shape=(6,) dtype=float32_ref&gt;</code></pre>
-<p>那如何查看tensor具体的值呢？可以使用eval方法：</p>
-<pre><code class="python">print(K.eval(x))</code></pre>
-<p><strong>输出：</strong></p>
-<pre><code class="powershell">C:\Users\WYN\Desktop&gt;python temp.py
-Using TensorFlow backend.
-2019-06-06 16:36:48.235021: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.
-1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn&#39;
-t compiled to use SSE instructions, but these are available on your machine and
-could speed up CPU computations.
-2019-06-06 16:36:48.235021: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.
-1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn&#39;
-t compiled to use SSE2 instructions, but these are available on your machine and
- could speed up CPU computations.
-2019-06-06 16:36:48.236021: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.
-1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn&#39;
-t compiled to use SSE3 instructions, but these are available on your machine and
- could speed up CPU computations.
-2019-06-06 16:36:48.236021: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.
-1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn&#39;
-t compiled to use SSE4.1 instructions, but these are available on your machine a
-nd could speed up CPU computations.
-2019-06-06 16:36:48.237021: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.
-1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn&#39;
-t compiled to use SSE4.2 instructions, but these are available on your machine a
-nd could speed up CPU computations.
-2019-06-06 16:36:48.238021: W c:\l\tensorflow_1501918863922\work\tensorflow-1.2.
-1\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn&#39;
-t compiled to use AVX instructions, but these are available on your machine and
-could speed up CPU computations.
-[ 1.  2.  3.  4.  5.  6.]</code></pre>
-<p>最下面那一行，就是这个tensor的值。</p>
-<p>在Keras的源码文件backend.py中，对eval()方法做了封装，要在tensorflow中输出一个tensor的值，要比这个麻烦点。</p>
-<p><a name="za95d"></a></p>
-<h3 id="Tensor的一些操作"><a href="#Tensor的一些操作" class="headerlink" title="Tensor的一些操作"></a>Tensor的一些操作</h3><p><a name="5Hfxv"></a></p>
-<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>使用K.concatenate()方法，该方法接收两个参数，第一个是tensor列表，第二个是要合并的轴</p>
-<p><strong>示例：</strong></p>
-<pre><code class="python"># x的shape为(1, 6)
-x = [1, 2, 3, 4, 5, 6]
-x = np.array(x).reshape((1, -1))
-x = K.variable(x)
-
-# y的shape为(1, 6)
-y = [6, 5, 4, 3, 2, 1]
-y = np.array(y).reshape((1, -1))
-y = K.variable(y)
-
-z = K.concatenate([x, y], 0)
-print(z)
-print(K.eval(z))
-
-z = K.concatenate([x, y], 1)
-print(z)
-print(K.eval(z))</code></pre>
-<p><strong>输出：</strong></p>
-<pre><code class="powershell">C:\Users\WYN\Desktop&gt;python temp.py
-Using TensorFlow backend.
-Tensor(&quot;concat:0&quot;, shape=(2, 6), dtype=float32)
-......
-[[ 1.  2.  3.  4.  5.  6.]
- [ 6.  5.  4.  3.  2.  1.]]
-Tensor(&quot;concat_1:0&quot;, shape=(1, 12), dtype=float32)
-[[ 1.  2.  3.  4.  5.  6.  6.  5.  4.  3.  2.  1.]]</code></pre>
-<p>可以看到，x和y都是shape为(1, 6)的Tensor，在shape=0处合并，新的Tensor的shape为(2, 6<br>，在shape=1处合并，新的Tensor的shape为(1, 12)。</p>
-<p><a name="0pyWM"></a></p>
-<h4 id="判断是否是稀疏的"><a href="#判断是否是稀疏的" class="headerlink" title="判断是否是稀疏的"></a>判断是否是稀疏的</h4><p>使用K.is_sparse()函数判断一个Tensor是否是稀疏的。</p>
-<p><strong>稠密张量和稀疏张量<br></strong><br>**<br>一般的张量形式跟矩阵差不多，比如上面的shape为(2, 6)的Tensor，其实跟一个2行6列的矩阵形式基本一致，这种Tnesor也可以称之为稠密张量；</p>
-<p>与之对应的，还有一种稀疏张量，其形式为SparseTensor(indices, values, dense_shape) </p>
+<h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><hr>
 <ul>
-<li>indices是一个维度为(n, ndims)的2-D int64张量，指定非零元素的位置。比如indices=[[1,3], [2,4]]表示[1,3]和[2,4]位置的元素为非零元素。n表示非零元素的个数，ndims表示构造的稀疏张量的维数；</li>
-<li>values是一个维度为(N)的1-D张量，对应indices所指位置的元素值；</li>
-<li>dense_shape是一个维度为(ndims)的1-D张量，代表稀疏张量的维度。</li>
+<li>ctrl + a 将光标移动到命令行开头相当于VIM里shift+^ </li>
+<li>ctrl + e 将光标移动到命令行结尾处相当于VIM里shift+$ </li>
+<li>ctrl + f 光标向后移动一个字符相当于VIM里l </li>
+<li>ctrl + b 光标向前移动一个字符相当于VIM里h </li>
+<li>ctrl + 方向键左键 光标移动到前一个单词开头 </li>
+<li>ctrl + 方向键右键 光标移动到后一个单词结尾 </li>
+<li>ctrl + x 在上次光标所在字符和当前光标所在字符之间跳转 </li>
+<li>alt + f 跳到光标所在位置单词尾部</li>
 </ul>
-<p>另外，可以使用K.to_dense()方法将一个稀疏张量转换成一个稠密张量。</p>
-<p>注：文中提到的K指的是keras的backend，即</p>
-<pre><code class="python">import keras.backend as K</code></pre>
-<p><a name="bFKEp"></a></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>Kreas官方文档：<br><a href="https://keras.io/zh/backend/" target="_blank" rel="noopener">https://keras.io/zh/backend/</a></p>
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><hr>
+<ul>
+<li>ctrl + t 将光标当前字符与前面一个字符替换 </li>
+<li>alt + t 交换两个光标当前所处位置单词和光标前一个单词 </li>
+<li>alt + u 把光标当前位置单词变为大写 </li>
+<li>alt + l 把光标当前位置单词变为小写 </li>
+<li>alt + c 把光标当前位置单词头一个字母变为大写 </li>
+<li>^oldstr^newstr 替换前一次命令中字符串</li>
+</ul>
+<h3 id="历史命令编辑"><a href="#历史命令编辑" class="headerlink" title="历史命令编辑"></a>历史命令编辑</h3><hr>
+<ul>
+<li>ctrl + p 返回上一次输入命令字符 </li>
+<li>ctrl + r 输入单词搜索历史命令 </li>
+<li>alt + p 输入字符查找与字符相接近的历史命令 </li>
+<li>alt + &gt; 返回上一次执行命令</li>
+</ul>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><hr>
+<ul>
+<li>ctrl + s 锁住终端 </li>
+<li>ctrl + q 解锁终端 </li>
+<li>ctrl + l 清屏相当于命令clear </li>
+<li>ctrl + c 另起一行 </li>
+<li>ctrl + i 类似TAB健补全功能 </li>
+<li>ctrl + o 重复执行命令 </li>
+<li>alt + 数字键 操作的次数</li>
+</ul>
 
             </div>
             <hr/>
@@ -699,20 +636,19 @@ Tensor(&quot;concat_1:0&quot;, shape=(1, 12), dtype=float32)
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/07/17/深度学习/对CTC的一个直观理解/">
+                <a href="/2019/07/17/shen-du-xue-xi/juan-ji-he-ti-huan-de-yi-dian-li-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="对CTC的一个直观理解">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="卷积核替换的一点理解">
                         
-                        <span class="card-title">对CTC的一个直观理解</span>
+                        <span class="card-title">卷积核替换的一点理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            翻译自：https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c
-如果想要让计算机识
+                            卷积神经网络中，卷积核如何使用，卷积核替换规则是怎样的，本文是个人对此的一点理解
                         
                     </div>
                     <div class="publish-info">
@@ -738,16 +674,8 @@ Tensor(&quot;concat_1:0&quot;, shape=(1, 12), dtype=float32)
                         <span class="chip bg-color">DeepLearning</span>
                     </a>
                     
-                    <a href="/tags/NLP/" target="_blank">
-                        <span class="chip bg-color">NLP</span>
-                    </a>
-                    
-                    <a href="/tags/RNN/" target="_blank">
-                        <span class="chip bg-color">RNN</span>
-                    </a>
-                    
-                    <a href="/tags/CTC/" target="_blank">
-                        <span class="chip bg-color">CTC</span>
+                    <a href="/tags/CNN/" target="_blank">
+                        <span class="chip bg-color">CNN</span>
                     </a>
                     
                 </div>
@@ -761,34 +689,31 @@ Tensor(&quot;concat_1:0&quot;, shape=(1, 12), dtype=float32)
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/17/深度学习/卷积核替换的一点理解/">
+                <a href="/2019/07/16/kai-fa/hdf5-wen-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="卷积核替换的一点理解">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="HDF5文件">
                         
-                        <span class="card-title">卷积核替换的一点理解</span>
+                        <span class="card-title">HDF5文件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-感受野
-定义：感受野用来表示网络内部的不同神经元对原图像的感受范围的大小，或者说，cnn每一层输出的特征图(feature map)上的像素点在原始图像上映射的区域大小。
-神经元之所以无法对原始图像的所有信息进行感知，是因为在这些网络结构
+                            HDF5文件简介
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-17
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/深度学习/" class="post-category" target="_blank">
-                                    深度学习
+                            <a href="/categories/开发/" class="post-category" target="_blank">
+                                    开发
                                 </a>
                             
                             
@@ -798,12 +723,12 @@ Tensor(&quot;concat_1:0&quot;, shape=(1, 12), dtype=float32)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DeepLearning/" target="_blank">
-                        <span class="chip bg-color">DeepLearning</span>
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/CNN/" target="_blank">
-                        <span class="chip bg-color">CNN</span>
+                    <a href="/tags/Data/" target="_blank">
+                        <span class="chip bg-color">Data</span>
                     </a>
                     
                 </div>
@@ -961,7 +886,7 @@ Tensor(&quot;concat_1:0&quot;, shape=(1, 12), dtype=float32)
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">11.5k</span>
+                <span class="white-color">11.2k</span>
             
 
             
