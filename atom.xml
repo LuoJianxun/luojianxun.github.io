@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>黯居</title>
   
-  <subtitle>深居闹市&lt;br&gt;不显锋芒</subtitle>
+  <subtitle>深居闹市 不显锋芒</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luojianxun.github.io/"/>
@@ -71,11 +71,11 @@
       <category term="深度学习" scheme="https://luojianxun.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
-    
       <category term="DeepLearning" scheme="https://luojianxun.github.io/tags/DeepLearning/"/>
     
       <category term="Keras" scheme="https://luojianxun.github.io/tags/Keras/"/>
+    
+      <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
     
   </entry>
   
