@@ -73,9 +73,9 @@
     
       <category term="DeepLearning" scheme="https://luojianxun.github.io/tags/DeepLearning/"/>
     
-      <category term="Keras" scheme="https://luojianxun.github.io/tags/Keras/"/>
-    
       <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
+    
+      <category term="Keras" scheme="https://luojianxun.github.io/tags/Keras/"/>
     
   </entry>
   
