@@ -433,12 +433,12 @@
                 <p>翻译自：<a href="https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c" target="_blank" rel="noopener">https://towardsdatascience.com/intuitively-understanding-connectionist-temporal-classification-3797e43a86c</a></p>
 <p>如果想要让计算机识别文本，神经网络（neural networks, 以下简称NN）是一个非常好的选择，因为目前来说，它相对于其他方法表现的更好。在实际用例中，NN一般由卷积层和循环层组成，卷积层用来提取序列特征，循环层通过该序列传播信息。最后会以一个简化的矩阵的形式输出每个序列元素对应的字符分数。现在，有两件事需要这个矩阵来做：<br>1.训练：计算训练神经网络过程中的损失值<br>2.推断：通过解码矩阵来获得输入图片包含的信息<br>这两项任务都可以通过CTC操作来实现，下面图片1是一个手写识别系统的概览</p>
 <p>来看看CTC的具体操作，本文会在不涉及它背后复杂公式的情况下，挖掘一下到底它是怎么工作的。最后，如果你对相关的python代码和公式有兴趣，我会给出参考链接。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556080558614-9a90335d-2ede-4cf6-a2e8-17cdd44e074b.png#align=left&display=inline&height=325&name=1.PNG&originHeight=333&originWidth=764&size=85620&status=done&width=746" alt="1.PNG"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556080558614-9a90335d-2ede-4cf6-a2e8-17cdd44e074b.png#align=left&display=inline&height=325&name=1.PNG&originHeight=333&originWidth=764&size=85620&status=done&width=746" alt="图1 手写字符识别的概况"></p>
 <p><a name="f1f92729"></a></p>
 <h2 id="我们为什么想要使用CTC"><a href="#我们为什么想要使用CTC" class="headerlink" title="我们为什么想要使用CTC"></a>我们为什么想要使用CTC</h2><p>当然，我们可以创建一个包含文本行的图片数据集，然后为图片每个水平位置指定想应的字符，就像下图展示的那样。然后，我们就可以训练一个神经网络来输出每个水平位置上的字符得分。然而，这种简单的解决办法有两个问题需要处理：</p>
 <p>1.在字符水平上标注一个数据集是非常耗时（和无聊）的</p>
 <p>2.这种办法只能得到字符的得分，因此我们还需要做更多的处理才能从中获得最终的文本。单个字符可能会横跨多个水平位置，例如，我们可能会从下图中得到一个字符串”ttooo”，因为字母”o”在这个地方显得非常宽。这时我们就不得不去除所有多余的”t”和”o”。但是，如果我们要识别的文本是”too”时，去除所有重复的”o”显然会产生一个错误的结果，这种情况该如何处理？</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556080528404-d11a81f5-2ebe-4d16-9a32-42812038bd69.png#align=left&display=inline&height=388&name=2.PNG&originHeight=388&originWidth=477&size=22987&status=done&width=477" alt="2.PNG"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556080528404-d11a81f5-2ebe-4d16-9a32-42812038bd69.png#align=left&display=inline&height=388&name=2.PNG&originHeight=388&originWidth=477&size=22987&status=done&width=477" alt="图2 图像的每个水平位置的标注"></p>
 <p>CTC为我们解决了下面的两个问题：</p>
 <p>1.我们只需要告诉CTC损失函数图片中包含文本。因此我们可以忽略图片中字符的位置和宽度。</p>
 <p>2.不需要为了识别文本而去做更多的处理。</p>
@@ -454,7 +454,7 @@
 <p>正如你所见的，这种模式也允许我们轻松地为同一个文本创建不同的比对情况，例如，”t-o”、”too”和”-to”都表示同一文本(“to”)，但是对应不同的图片比对情况。我们会训练神经网络以输出一个编码过的文本（通过编码神经网络的输出矩阵）。</p>
 <p><a name="e6bb7ee3"></a></p>
 <h3 id="计算损失"><a href="#计算损失" class="headerlink" title="计算损失"></a>计算损失</h3><p>我们需要在训练神经网络时计算给定的图片和对应GT文本的损失值。你已经知道神经网络会输出一个矩阵，这个矩阵的内容是每个字符在每个时间步长上的得分。下图是一个极简版本的矩阵：只有两个时间步长（t0，t1）和三个字符（”a”、”b”和空白字符”-“）。每个时间步长上的字符得分总和为1。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556090756592-028eec90-fb75-4795-8cb8-8561115b371b.png#align=left&display=inline&height=452&name=3.PNG&originHeight=452&originWidth=695&size=41019&status=done&width=695" alt="3.PNG"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556090756592-028eec90-fb75-4795-8cb8-8561115b371b.png#align=left&display=inline&height=452&name=3.PNG&originHeight=452&originWidth=695&size=41019&status=done&width=695" alt="图3 最佳解码过程"></p>
 <p>此外，你已经知道损失值是通过将所有可能的GT文本的比对情况的得分求和得到的，这种方法并不关心文本在图片的哪个位置出现。</p>
 <p>某个比对情况（或者称为路径，在很多文献中都这样叫它）的得分是将对应字符的得分相乘计算出来的。在上面的例子中，路径”aa”的得分是0.4<em>0.4=0.16，”a-“的得分是0.4</em>0.6=0.24，”-a”的得分是0.6<em>0.4=0.24。为了得到给定GT文本的得分，我们将对应该文本的全部路径得分求和。假设示例中的GT文本是”a”：我们需要计算所有长度为2的可能情况（因为矩阵有两个时间步长），这些情况包括”aa”、”a-“和”-a”，我们前面已经计算了这几条路径的得分，所以我们只需要将它们加起来0.4</em>0.4+0.4<em>0.6+0.6</em>0.4=0.64。如果假设GT文本是””，可以发现只有一条对应的路径”–”，它的得分为0.6*0.6=0.36。</p>
 <p>如果你观察的够仔细，可以发现我们计算了GT文本的概率，而不是损失值。然而，损失值只是概率的负对数。损失值通过神经网络反向传播，神经网络的参数会根据使用的优化器进行更新，这里我们不做深入讨论。</p>
@@ -464,7 +464,7 @@
 <p>1.通过选取每个时间步长上最可能的字符来计算最优路径；</p>
 <p>2.通过先去除路径中的重复字符，再去除所有空白字符的方法来撤销编码，剩下的内容即识别出的文本。</p>
 <p>下图中给出了一个示例，包括”a”、”b”和空白字符”-“三个字符，5个时间步长。将最优路径解码器应用于这个矩阵上：t0时刻最可能的字符是”a”，t1和t2时刻也是”a”，t3时刻空白字符得分最高，最后，t4时刻最可能的是”b”。由此我们获得了一条路径”aaa-b”。去除重复字符，生成字符串”a-b”，去除空白字符，得到文本”ab”，也就是识别出的文本。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556093632771-a59ef35a-52e0-4caa-8589-c0a5d6386e4b.png#align=left&display=inline&height=487&name=4.PNG&originHeight=487&originWidth=649&size=44744&status=done&width=649" alt="4.PNG"><br><br><br>当然，最优解码路径也只是一种近似情况。构造一个反例非常容易：如果解码图片3中的矩阵，最终的识别文本将会是””。但我们已经知道””的概率是0.36，而”a”的概率是0.64。不过，在实际情况中，近似算法经常会给出一个较好的结果。另外，还有许多更好的解码器，例如波束搜索解码，前缀搜索解码或令牌传递，它们使用语言结构信息来提升识别结果。<br></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/324368/1556093632771-a59ef35a-52e0-4caa-8589-c0a5d6386e4b.png#align=left&display=inline&height=487&name=4.PNG&originHeight=487&originWidth=649&size=44744&status=done&width=649" alt="图4 最佳解码路径"><br><br><br>当然，最优解码路径也只是一种近似情况。构造一个反例非常容易：如果解码图片3中的矩阵，最终的识别文本将会是””。但我们已经知道””的概率是0.36，而”a”的概率是0.64。不过，在实际情况中，近似算法经常会给出一个较好的结果。另外，还有许多更好的解码器，例如波束搜索解码，前缀搜索解码或令牌传递，它们使用语言结构信息来提升识别结果。<br></p>
 <p><a name="49ad099b"></a></p>
 <h2 id="结论、更深入的文献"><a href="#结论、更深入的文献" class="headerlink" title="结论、更深入的文献"></a>结论、更深入的文献</h2><p>首先，我们聚焦于普通解决方案遇到的问题。然后我们观察了CTC如何解决这些问题。最后，我们了解了CTC怎样编码文本，怎样计算损失以及如何解码CTC训练的神经网络的输出矩阵，从而解释了CTC的工作原理。</p>
 <p>这应该让你能够在TensorFlow中使用ctc_loss或者ctc_greedy_decoder时，有一个更直观的理解。但是，如果你想自己实现一个CTC，你需要学习更多的细节，尤其是如何使其运行得更快这点。Graves et al. [1]介绍了CTC操作，这篇文章同时展示了所有相关的数学知识。如果你对如何提升解码感兴趣，可以看看关于波束搜索解码的这几篇文章[2][3]。我使用Python和C++实现了一些解码器和损失函数，你可以在GitHub上找到它[4][5]。最后，如果你想了解如何识别（手写）文本的大图，可以看看我的关于如何建立一个手写文本识别系统的文章。<br>[1] <a href="https://www.cs.toronto.edu/~graves/icml_2006.pdf" target="_blank" rel="noopener">Original paper containing all the math</a><br>[2] <a href="https://towardsdatascience.com/5a889a3d85a7" target="_blank" rel="noopener">Vanilla beam search decoding</a><br>[3] <a href="https://towardsdatascience.com/b051d28f3d2e" target="_blank" rel="noopener">Word beam search decoding</a><br>[4] <a href="https://github.com/githubharald/CTCDecoder" target="_blank" rel="noopener">Python implementation of decoders</a><br>[5] <a href="https://github.com/githubharald/CTCWordBeamSearch" target="_blank" rel="noopener">Implementation of word beam search decoding</a><br>[6] <a href="https://towardsdatascience.com/2326a3487cd5" target="_blank" rel="noopener">Text recognition system</a></p>
@@ -730,12 +730,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DeepLearning/" target="_blank">
-                        <span class="chip bg-color">DeepLearning</span>
-                    </a>
-                    
                     <a href="/tags/Python/" target="_blank">
                         <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/DeepLearning/" target="_blank">
+                        <span class="chip bg-color">DeepLearning</span>
                     </a>
                     
                     <a href="/tags/Keras/" target="_blank">
