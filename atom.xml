@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luojianxun.github.io/"/>
-  <updated>2019-09-16T03:40:03.751Z</updated>
+  <updated>2019-09-17T01:23:20.028Z</updated>
   <id>https://luojianxun.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Something bother me</title>
+    <link href="https://luojianxun.github.io/2019/09/16/sui-bi/zui-jin-de-yi-xie-shi/"/>
+    <id>https://luojianxun.github.io/2019/09/16/sui-bi/zui-jin-de-yi-xie-shi/</id>
+    <published>2019-09-16T12:32:32.000Z</published>
+    <updated>2019-09-17T01:23:20.028Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;两个多月了……&lt;/p&gt;
+&lt;p&gt;最近一直在忙着搬家，从主校区搬到分校。说来可笑，从来都是听说从分校向主校搬，在学生没有犯任何错误的情况下，把学生无故从主校流放到分校的情况，还真是闻所未闻。&lt;/p&gt;
+&lt;p&gt;从去年入校知道这件事开始，就对这件事充满了不满和担忧……&lt;/p&gt;
+&lt;p&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://luojianxun.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="daily" scheme="https://luojianxun.github.io/tags/daily/"/>
+    
+  </entry>
   
   <entry>
     <title>对CTC的一个直观理解</title>
@@ -73,9 +102,9 @@
     
       <category term="DeepLearning" scheme="https://luojianxun.github.io/tags/DeepLearning/"/>
     
-      <category term="Keras" scheme="https://luojianxun.github.io/tags/Keras/"/>
-    
       <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
+    
+      <category term="Keras" scheme="https://luojianxun.github.io/tags/Keras/"/>
     
   </entry>
   
