@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luojianxun.github.io/"/>
-  <updated>2019-09-17T01:23:20.028Z</updated>
+  <updated>2019-09-17T04:08:38.371Z</updated>
   <id>https://luojianxun.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://luojianxun.github.io/2019/09/16/sui-bi/zui-jin-de-yi-xie-shi/"/>
     <id>https://luojianxun.github.io/2019/09/16/sui-bi/zui-jin-de-yi-xie-shi/</id>
     <published>2019-09-16T12:32:32.000Z</published>
-    <updated>2019-09-17T01:23:20.028Z</updated>
+    <updated>2019-09-17T04:08:38.371Z</updated>
     
     <summary type="html">
     
@@ -102,9 +102,9 @@
     
       <category term="DeepLearning" scheme="https://luojianxun.github.io/tags/DeepLearning/"/>
     
-      <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
-    
       <category term="Keras" scheme="https://luojianxun.github.io/tags/Keras/"/>
+    
+      <category term="Python" scheme="https://luojianxun.github.io/tags/Python/"/>
     
   </entry>
   
